@@ -11,5 +11,6 @@ if ($connection->connect_errno) {
     exit();
 } else {
     printf("Connected to the database");
+}
 $connection->close();
 ?>
