@@ -184,9 +184,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    //Put everyting in DB
 
-	global $con;
-	
-	$con = mysqli_connect("localhost","root","","Bump");
+	$dbhost = getenv("MYSQL_SERVICE_HOST");
+	$dbport = getenv("MYSQL_SERVICE_PORT");
+	$dbuser = getenv("MYSQL_USER");
+	$dbpwd = getenv("MYSQL_PASSWORD");
+	$dbname = getenv("MYSQL_DATABASE");
+	$con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
 
 
 	if( $con ) {
