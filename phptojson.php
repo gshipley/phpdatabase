@@ -15,7 +15,12 @@
 		$json_array[] = $row;
 	}
 	echo json_encode($json_array);*/
-	$con = mysqli_connect("localhost","root","","Bump");
+	$dbhost = getenv("MYSQL_SERVICE_HOST");
+	$dbport = getenv("MYSQL_SERVICE_PORT");
+	$dbuser = getenv("MYSQL_USER");
+	$dbpwd = getenv("MYSQL_PASSWORD");
+	$dbname = getenv("MYSQL_DATABASE");
+	$con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
 	
 	$sql_test = "SELECT id,username, password, phone_num, gender FROM test";
 	$result_test = mysqli_query($con, $sql_test);
