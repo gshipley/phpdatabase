@@ -185,7 +185,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	global $con;
 
 	
-	$con = mysqli_connect("localhost","root","","Bump");
+	$dbhost = getenv("MYSQL_SERVICE_HOST");
+	$dbport = getenv("MYSQL_SERVICE_PORT");
+	$dbuser = getenv("MYSQL_USER");
+	$dbpwd = getenv("MYSQL_PASSWORD");
+	$dbname = getenv("MYSQL_DATABASE");
+	$con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
 	$sql_table_test = "SELECT id,username,password FROM test";
 
 	$result_table_test = mysqli_query($con, $sql_table_test);
