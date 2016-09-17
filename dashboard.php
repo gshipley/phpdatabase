@@ -198,7 +198,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$sql_all_info = "SELECT * FROM `test`";
 
 		if(!mysqli_query($con,$sql_chaz)){
-			echo 'Not inserted';
+			echo 'Not inserted\n';
+			echo $dbhost;
 			die( print_r( mysqli_error($con), true));
 		}
 		else{
