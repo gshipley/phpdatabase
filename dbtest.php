@@ -11,6 +11,7 @@ if ($connection->connect_errno) {
     exit();
 } else {
     printf("Connected to the database");
+    echo $dbhost ." ".$dbport . " ". $dbuser . " ". $dbpwd. " " .$dbname;
 }
 $connection->close();
 ?>
