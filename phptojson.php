@@ -72,7 +72,7 @@
     echo "0 results";
 	}
 	$fp = fopen('results.json', 'w');
-	fwrite($fp, json_encode($allinfo, JSON_PRETTY_PRINT));
+	fwrite($fp, json_encode($allinfo, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK));
 	fclose($fp);
 
 
