@@ -32,6 +32,7 @@
 	$result_partner = mysqli_query($con, $sql_id);
 	$partner_string = "";
 	global $info;
+	global $allinfo = "";
 	//$row3 = mysqli_fetch_assoc($result_partner);
 
 	if (mysqli_num_rows($result_test) > 0) {
@@ -58,18 +59,23 @@
 	    	}
 	    	
 
-	        $info = "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}" . "<br>";
+	        $info = "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}";
+	        $allinfo .= $info;
 	        $disease_string = "";
 	        $partner_string = "";
 	        mysqli_data_seek($result_disease,0);
 	        mysqli_data_seek($result_partner,0);
-	        $fp = fopen('results.json', 'w');
-		fwrite($fp, json_encode($info));
-		fclose($fp);
+
+	        
 	    }
 	} else {
     echo "0 results";
 	}
+	$fp = fopen('results.json', 'w');
+	fwrite($fp, json_encode($allinfo, JSON_PRETTY_PRINT));
+	fclose($fp);
+
+
 	//for ($x = 0; $x <= 10; $x++) {
     //	echo "The number is: $x <br>";
 	//}
