@@ -32,7 +32,7 @@
 	$result_partner = mysqli_query($con, $sql_id);
 	$partner_string = "";
 	global $info;
-	global $allinfo = "";
+	$allinfo = "";
 	//$row3 = mysqli_fetch_assoc($result_partner);
 
 	if (mysqli_num_rows($result_test) > 0) {
