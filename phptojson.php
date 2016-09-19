@@ -6,7 +6,7 @@
 <body>
 <script>
 
-var myJSON = <?php 
+<?php 
 	/*$con = mysqli_connect("localhost","root","","Bump");
 	$sql = "SELECT * FROM test";
 	$result = mysqli_query($con, $sql);
@@ -60,23 +60,21 @@ var myJSON = <?php
 	    	}
 	    	
 
-	        echo "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}" . "\n";
+	        $info = "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}";
 	        $disease_string = "";
 	        $partner_string = "";
 	        mysqli_data_seek($result_disease,0);
 	        mysqli_data_seek($result_partner,0);
-	        //$fp = fopen('results.json', 'w');
-			//fwrite($fp, json_encode($info));
-			//fclose($fp);
+	        $fp = fopen('results.json', 'w');
+		fwrite($fp, json_encode($info));
+		fclose($fp);
 	    }
 	} else {
     echo "0 results";
 	}
 
 	
- ?>;
-document.write(myJSON);
- </script>
+ ?>
 
 </body>
 </html>
