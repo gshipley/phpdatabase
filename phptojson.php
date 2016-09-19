@@ -63,9 +63,7 @@
 	        $partner_string = "";
 	        mysqli_data_seek($result_disease,0);
 	        mysqli_data_seek($result_partner,0);
-	        $fp = fopen('results.json', 'w');
-		fwrite($fp, json_encode($info,JSON_UNESCAPED_UNICODE));
-		fclose($fp);
+	        file_put_contents('results.json', $info);
 	    }
 	} else {
     echo "0 results";
