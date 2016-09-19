@@ -4,8 +4,6 @@
 	<title></title>
 </head>
 <body>
-<script>
-
 <?php 
 	/*$con = mysqli_connect("localhost","root","","Bump");
 	$sql = "SELECT * FROM test";
@@ -60,7 +58,7 @@
 	    	}
 	    	
 
-	        $info = "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}";
+	        $info = "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}" . "<br>";
 	        $disease_string = "";
 	        $partner_string = "";
 	        mysqli_data_seek($result_disease,0);
@@ -72,8 +70,17 @@
 	} else {
     echo "0 results";
 	}
-
+	//for ($x = 0; $x <= 10; $x++) {
+    //	echo "The number is: $x <br>";
+	//}
+	//SELECT TOP 1 CustomerName FROM Customers
 	
+	//SELECT CustomerName FROM test;
+
+	$json = "{ "." : { password : password,PhoneNum: number,Gender : true Diseases { type : date, type : date }Partners : {username : date,username : date} } }";
+	//echo $json;
+
+
  ?>
 
 </body>
