@@ -41,7 +41,7 @@
 	    	
 	    	while($row2 = mysqli_fetch_assoc($result_disease)){
 		    	while($row["id"] == $row2["id"]){
-		    		$disease_string .= $row2["disease"].":".$row2["disease_date"];
+		    		$disease_string .= "\"". $row2["disease"] ."\"".":"."\"".$row2["disease_date"]."\"";
 		    		if( ($row2 = mysqli_fetch_assoc($result_disease)) && ($row["id"] == $row2["id"])  ){
 		    			$disease_string .= ", ";
 		    		}
@@ -50,7 +50,7 @@
 		    }
 	    	while($row3 = mysqli_fetch_assoc($result_partner)){
 		    	while($row["id"] == $row3["id"]){
-		    		$partner_string .= $row3["partner"].":".$row3["partner_date"];
+		    		$partner_string .= "\"". $row3["partner"]. "\"".":". "\"".$row3["partner_date"]."\"";
 		    		if( ($row3 = mysqli_fetch_assoc($result_partner)) && ($row["id"] == $row3["id"]) ){
 		    			$partner_string .= ", ";
 		    		}
@@ -58,22 +58,25 @@
 		    	}
 	    	}
 	    	
-
-	        $info = "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}";
+	    	$password = '"password"';
+	    	$phonenum = '"PhoneNum"';
+	    	$gender = '"Gender"';
+	    	$diseases = '"Diseases"';
+	    	$partners = '"Partners"';
+	        echo "{"."\"" . $row["username"]."\"". ": {" .$password . " : " . "\"" . $row["password"]. "\"" . "," .$phonenum . " :". "\"" . $row["phone_num"] . "\"" . "," . $gender .":"  . $row["gender"] ."," . " ".$diseases . ":{". $disease_string . "}," . $partners . ":{" . $partner_string. "}}}" . "<br>";
 	        $allinfo .= $info;
 	        $disease_string = "";
 	        $partner_string = "";
-	        mysqli_data_seek($result_disease,0);
-	        mysqli_data_seek($result_partner,0);
+	        //mysqli_data_seek($result_disease,0);
+	        //mysqli_data_seek($result_partner,0);
 
 	        
 	    }
 	} else {
     echo "0 results";
 	}
-	$fp = fopen('results.json', 'w');
-	fwrite($fp, json_encode($allinfo, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK));
-	fclose($fp);
+	//$echoMe = json_encode($allinfo, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+	//echo $echoMe;	
 
 
 	//for ($x = 0; $x <= 10; $x++) {
