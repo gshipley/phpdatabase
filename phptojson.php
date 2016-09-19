@@ -4,7 +4,9 @@
 	<title></title>
 </head>
 <body>
-<?php 
+<script>
+
+var myJSON = <?php 
 	/*$con = mysqli_connect("localhost","root","","Bump");
 	$sql = "SELECT * FROM test";
 	$result = mysqli_query($con, $sql);
@@ -58,28 +60,23 @@
 	    	}
 	    	
 
-	        $info = "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}" . "<br>";
+	        echo "{" . $row["username"]. ": {\"password\" : " . $row["password"]. ", \"PhoneNum\" :".$row["phone_num"] . ",\"Gender\" : ". $row["gender"]. " \"Diseases \":{". $disease_string . "}" . "\"Partners\"" . ":{" . $partner_string. "}}}" . "\n";
 	        $disease_string = "";
 	        $partner_string = "";
 	        mysqli_data_seek($result_disease,0);
 	        mysqli_data_seek($result_partner,0);
-	        file_put_contents('results.json', $info);
+	        //$fp = fopen('results.json', 'w');
+			//fwrite($fp, json_encode($info));
+			//fclose($fp);
 	    }
 	} else {
     echo "0 results";
 	}
-	//for ($x = 0; $x <= 10; $x++) {
-    //	echo "The number is: $x <br>";
-	//}
-	//SELECT TOP 1 CustomerName FROM Customers
+
 	
-	//SELECT CustomerName FROM test;
-
-	$json = "{ "." : { password : password,PhoneNum: number,Gender : true Diseases { type : date, type : date }Partners : {username : date,username : date} } }";
-	//echo $json;
-
-
- ?>
+ ?>;
+document.write(myJSON);
+ </script>
 
 </body>
 </html>
