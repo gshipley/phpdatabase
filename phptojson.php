@@ -1,9 +1,11 @@
+<!--
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
 <body>
+-->
 <?php 
 	/*$con = mysqli_connect("localhost","root","","Bump");
 	$sql = "SELECT * FROM test";
@@ -21,6 +23,9 @@
 	$dbpwd = getenv("MYSQL_PASSWORD");
 	$dbname = getenv("MYSQL_DATABASE");
 	$con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
+	if ($con->connect_error) {
+    	die('Connect Error: ' . $mysqli->connect_error);
+	}
 	
 	$sql_test = "SELECT id,username, password, phone_num, gender FROM test";
 	$result_test = mysqli_query($con, $sql_test);
@@ -92,6 +97,7 @@
 
 
  ?>
-
+<!--
 </body>
 </html>
+-->
