@@ -181,6 +181,9 @@ $dbuser = getenv("MYSQL_USER");
 $dbpwd = getenv("MYSQL_PASSWORD");
 $dbname = getenv("MYSQL_DATABASE");
 $con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
+if ($con->connect_error) {
+    die('Connect Error: ' . $mysqli->connect_error);
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $username = $_POST['username'];
    $password = $_POST['password'];
