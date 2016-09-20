@@ -175,22 +175,18 @@
 
 <body>
 <?php
+$dbhost = getenv("MYSQL_SERVICE_HOST");
+$dbport = getenv("MYSQL_SERVICE_PORT");
+$dbuser = getenv("MYSQL_USER");
+$dbpwd = getenv("MYSQL_PASSWORD");
+$dbname = getenv("MYSQL_DATABASE");
+$con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $username = $_POST['username'];
    $password = $_POST['password'];
    $phone_num = $_POST['phone_num'];
    $gender = $_POST['gender'];
-   
-
    //Put everyting in DB
-
-	$dbhost = getenv("MYSQL_SERVICE_HOST");
-	$dbport = getenv("MYSQL_SERVICE_PORT");
-	$dbuser = getenv("MYSQL_USER");
-	$dbpwd = getenv("MYSQL_PASSWORD");
-	$dbname = getenv("MYSQL_DATABASE");
-	$con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
-
 
 	if( $con ) {
 
