@@ -1,4 +1,4 @@
-
+<!--
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -8,7 +8,7 @@
 
 	<link rel="stylesheet" href="tester/bootstrap-switch.css"/>
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!--<link href="bootstrap/css/bootstrap-switch.css" rel="stylesheet">-->
+    <!--<link href="bootstrap/css/bootstrap-switch.css" rel="stylesheet">
 	<link href="bootstrap/css/docs.min.css" rel="stylesheet">
 	<link href="bootstrap/css/main.css" rel="stylesheet">
 	
@@ -174,6 +174,7 @@
 </head>
 
 <body>
+-->
 <?php
 global $con;
 $dbhost = getenv("MYSQL_SERVICE_HOST");
@@ -182,6 +183,9 @@ $dbuser = getenv("MYSQL_USER");
 $dbpwd = getenv("MYSQL_PASSWORD");
 $dbname = getenv("MYSQL_DATABASE");
 $con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
+if ($con->connect_error) {
+    die('Connect Error: ' . $mysqli->connect_error);
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $username = $_POST['username'];
    $password = $_POST['password'];
@@ -223,16 +227,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 ?>
+<!--
 <div class="main">
 <div class="leftCol">
 
 
-<!--Service Desk Metrics-->
+<!--Service Desk Metrics
 <div class="leftCol">
 <div class="row" id="rcorner_main">
 	<h1 class="h3">Bump Test <a style="color:grey" ></a></h1>
 
-	<form id="helpdeskSlas" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+	<form id="helpdeskSlas" action="" method="POST">
 	
     <div class="col-sm-6 col-lg-6"  >
 		
@@ -278,3 +283,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+-->
