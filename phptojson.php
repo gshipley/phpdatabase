@@ -76,7 +76,7 @@
     echo "0 results";
 	}
 	$fp = fopen('results.json', 'w');
-	fwrite($fp, json_encode($allinfo, JSON_PRETTY_PRINT));
+	fwrite($fp, json_encode($allinfo, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 	fclose($fp);
 
 
