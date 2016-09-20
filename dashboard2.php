@@ -175,6 +175,14 @@
 
 <body>
 <?php
+global $con;
+
+$dbhost = getenv("MYSQL_SERVICE_HOST");
+$dbport = getenv("MYSQL_SERVICE_PORT");
+$dbuser = getenv("MYSQL_USER");
+$dbpwd = getenv("MYSQL_PASSWORD");
+$dbname = getenv("MYSQL_DATABASE");
+$con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $username = $_POST['username'];
    $password = $_POST['password'];
@@ -182,15 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $disease_date = $_POST['disease_date'];
    
    //Put everyting in DB
-	global $con;
-
 	
-	$dbhost = getenv("MYSQL_SERVICE_HOST");
-	$dbport = getenv("MYSQL_SERVICE_PORT");
-	$dbuser = getenv("MYSQL_USER");
-	$dbpwd = getenv("MYSQL_PASSWORD");
-	$dbname = getenv("MYSQL_DATABASE");
-	$con = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
 	$sql_table_test = "SELECT id,username,password FROM test";
 
 	$result_table_test = mysqli_query($con, $sql_table_test);
