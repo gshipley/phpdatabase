@@ -224,6 +224,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}else{
 		echo "Connection could not be established.<br/>";
 	}
+	$URL = "phpdatabase19-bump-php-db.0ec9.hackathon.openshiftapps.com/phptojson.php";
+	header ("Location: $URL");
 
 }
 ?>
